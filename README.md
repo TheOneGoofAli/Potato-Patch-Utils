@@ -16,14 +16,14 @@ These objects are used for credits and calculating contexts outside of a traditi
 `args` is a table of the following values:
 - `name` (string) [REQUIRED] - The name of the Team
 - `colour` (hex) - The Team name's text fill color
-- `loc` (string/boolean) - Assigns the Team's display name to a localization key of your choosing. Will be assigned to `'PotatoPatchTeam_' .. args.name` if a boolean is passed
+- `loc` (string/boolean) - Assigns the Team's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchTeam_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
 
 `PotatoPatchutils.Developer(args)`
 `args` is a table of the following values:
 - `name` (string) [REQUIRED] - The name of the Developer
 - `colour` (hex) - The Developer name's text fill color
-- `loc` (string/boolean) - Assigns the Developer's display name to a localization key of your choosing. Will be assigned to `'PotatoPatchDev_' .. args.name` if a boolean is passed
+- `loc` (string/boolean) - Assigns the Developer's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchDev_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
 - `team` (string) - The name of the Team the Developer is a part of
 
@@ -34,6 +34,8 @@ If the name of a Developer or Team object are used, the text will use the specif
 - `ppu_artist` (table) - The artist(s) of the Game Object
 - `ppu_coder` (table) - The coders(s) of the Game Object
 - `ppu_team` (table) - The team the Game Object was created for
+
+If you wish to add a credit page for each Team present in your mod, add `SMODS.current_mod.extra_tabs = PotatoPatchUtils.CREDITS.register_page(SMODS.current_mod)` to your mod.
 
 ### Localization Loading
 This feature allows for multiple localization `.lua` files to be used in one project. This allows for much easier handling of localization files in collaborative efforts

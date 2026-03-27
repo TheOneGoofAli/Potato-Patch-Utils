@@ -7,6 +7,7 @@ return {
             ppu_team_credit = 'Created by team ',
             ppu_and_spacer = ' and ',
             ppu_comma_spacer = ', ',
+            ppu_credits_tab_label = 'Team Credits',
 
             -- UI
             ppu_first_time_disable = "Do not show again",
