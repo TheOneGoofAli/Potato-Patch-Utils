@@ -69,8 +69,8 @@ function PotatoPatchUtils.Developer:init(args)
 
         PotatoPatchUtils.Developers[SMODS.current_mod.prefix .. '_' .. args.name] = self
 
-        if args.team and PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. args.team] then
-            table.insert(PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. args.team].members, self)
+        if args.team and PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. '_' .. args.team] then
+            table.insert(PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. '_' .. args.team].members, self)
         end
     end
 end
