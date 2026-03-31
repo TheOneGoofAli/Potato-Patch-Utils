@@ -136,7 +136,7 @@ function PotatoPatchUtils.CREDITS.create_credit_tab(mod)
 
     return {n = G.UIT.ROOT, config = { align = "m", r = 0.1, padding = 0.05, colour = G.C.BLACK, minw = 8, minh = 9 }, nodes = {
         {n=G.UIT.C, config = {align = 'cm', id = 'ppu_credits_page_nodes', teams = mod_teams, current_team = 1}, nodes = {
-            PotatoPatchUtils.CREDITS.create_team_credit_page(mod_teams[1]),
+            next(mod_teams) and PotatoPatchUtils.CREDITS.create_team_credit_page(mod_teams[1]),
         }}
     }}
 end
