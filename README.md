@@ -11,14 +11,14 @@ Will automatically load all `.lua` files within the passed in `path` (will typic
 
 ### Developer and Team objects
 These objects are used for credits and calculating contexts outside of a traditional game object
-`PotatoPatchutils.Team(args)`
+`PotatoPatchUtils.Team(args)`
 `args` is a table of the following values:
 - `name` (string) [REQUIRED] - The name of the Team
 - `colour` (hex) - The Team name's text fill color
 - `loc` (string/boolean) - Assigns the Team's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchTeam_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
 
-`PotatoPatchutils.Developer(args)`
+`PotatoPatchUtils.Developer(args)`
 `args` is a table of the following values:
 - `name` (string) [REQUIRED] - The name of the Developer
 - `colour` (hex) - The Developer name's text fill color
