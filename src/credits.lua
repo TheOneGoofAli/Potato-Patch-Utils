@@ -4,6 +4,15 @@ PotatoPatchUtils.CREDITS = {}
 PotatoPatchUtils.CREDITS.generate_string = function(developers, prefix, mod_prefix)
     if type(developers) ~= 'table' then return end
 
+    if prefix == 'ppu_team_credit' then
+        for _, name in ipairs(developers) do
+            if PotatoPatchUtils.Teams[mod_prefix .. '_' .. name].short_credit then
+                prefix = prefix .. '_short'
+                break
+            end
+        end
+    end
+
     local amount = #developers
     local credit_string = {n=G.UIT.R, config={align = 'tm'}, nodes={
                 {n=G.UIT.R, config={align='cm'}, nodes={{n=G.UIT.T, config={text = localize(prefix), shadow = true, colour = G.C.UI.BACKGROUND_WHITE, scale = 0.27}}}}

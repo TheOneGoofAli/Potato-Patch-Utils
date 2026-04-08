@@ -17,7 +17,8 @@ These objects are used for credits and calculating contexts outside of a traditi
 - `colour` (colour/gradient) - The Team name's text fill colour
 - `loc` (string/boolean) - Assigns the Team's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchTeam_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
-- `credit_rows` (table) how many developer objects to display on each row (credit screen has 2 rows, a table of 1 number will center the row in the page)
+- `credit_rows` (table) - How many developer objects to display on each row (credit screen has 2 rows, a table of 1 number will center the row in the page)
+- `short_credit` (boolean) - Setting this to `true` will change the team credit template text from `'Created by team '` to `'Created by '`
 ```Lua
 PotatoPatchUtils.Team {
   name = 'Example Team',
