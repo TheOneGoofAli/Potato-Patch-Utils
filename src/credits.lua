@@ -216,16 +216,28 @@ function PotatoPatchUtils.CREDITS.create_team_credit_page(team)
     PotatoPatchUtils.CREDITS.NODES = {}
 
     for i, member in ipairs(members) do
+        -- Create area for card credit
         PotatoPatchUtils.CREDITS.AREAS[i] = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W / 1.25, G.CARD_H / 1.25, {type = 'title_2', card_limit = 1, highlight_limit = 0})
+
+        -- Create card for credit, set states
         local card = Card(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W / 1.25, G.CARD_H / 1.25, nil, G.P_CENTERS.c_base)
         card.children.center:remove()
         card.children.center = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, member.atlas or "Joker", member.pos or {x = 0, y = 0})
+        card.children.center.states.hover = card.states.hover
+        card.children.center.states.click = card.states.click
+        card.children.center.states.drag = card.states.drag
+        card.children.center.states.collide.can = true
+        card.children.center:set_role({major = card, role_type = 'Glued', draw_major = card})
+
+        -- Check for card soul
         if member.soul_pos then
             card.children.ppu_floating_sprite = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, member.atlas or "Joker", member.soul_pos)
             card.children.ppu_floating_sprite.role.draw_major = card
             card.children.ppu_floating_sprite.states.hover.can = false
             card.children.ppu_floating_sprite.states.click.can = false
         end
+
+        -- Emplace card credit in its own area
         PotatoPatchUtils.CREDITS.AREAS[i]:emplace(card)
 		
 		-- Attach member and team information to the card
@@ -269,7 +281,6 @@ function PotatoPatchUtils.CREDITS.create_team_credit_page(team)
                 }}
             }}
         }}
-        card.states.drag.can = false
     end
 
     local max_columns = 1
