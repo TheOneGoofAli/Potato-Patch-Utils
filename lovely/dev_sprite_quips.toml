@@ -14,7 +14,16 @@ self.children.card = Card(self.T.x, self.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empt
 '''
 payload = '''
 if args.ppu_dev then
-    self.children.card.children.center.atlas = SMODS.get_atlas(PotatoPatchUtils.Developers[args.ppu_dev].atlas)
-    self.children.card.children.center:set_sprite_pos(PotatoPatchUtils.Developers[args.ppu_dev].pos)
+    local card_obj = self.children.card
+    local dev_obj = PotatoPatchUtils.Developers[args.ppu_dev]
+    card_obj.children.center.atlas = SMODS.get_atlas(dev_obj.atlas)
+    card_obj.children.center:set_sprite_pos(dev_obj.pos)
+    if dev_obj.soul_pos then
+        if card_obj.children.floating_sprite then card_obj.children.floating_sprite:remove() end
+        card_obj.children.floating_sprite = SMODS.create_sprite(card_obj.T.x, card_obj.T.y, card_obj.T.w, card_obj.T.h, dev_obj.atlas, dev_obj.soul_pos)
+        card_obj.children.floating_sprite.role.draw_major = card_obj
+        card_obj.children.floating_sprite.states.hover.can = false
+        card_obj.children.floating_sprite.states.click.can = false
+    end
 end
 '''
